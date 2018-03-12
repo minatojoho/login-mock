@@ -1,14 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  before_action :dump_env
+  # protect_from_forgery with: :exception
+  protect_from_forgery prepend: true 
 
   protected
-
-  def dump_env
-    p "====="
-    p request.base_url
-    p request.headers['origin']
-  end
 
   def not_authenticated
     redirect_to welcome_path

@@ -41,6 +41,12 @@ gem 'sorcery'
 # Session store by DB (ActiveRecord)
 gem 'activerecord-session_store'
 
+# Control AWS WAF
+gem 'aws-sdk-waf'
+
+# DotEnv
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
