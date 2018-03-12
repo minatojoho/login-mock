@@ -3,8 +3,10 @@ class HomeController < ApplicationController
 
   def index
     if params[:waf_block_by_ip] == "true"
-      p "-----"
-      target_ip_addr = request.remote_ip
+      # CloudFront 越しの Forwarded-For を取得
+      p request.env['HTTP_X_FORWARDED_FOR']
+      remote_ips = request.env['HTTP_X_FORWARDED_FOR'].split(",")
+      target_ip_addr = remote_ips[0]
       # WAF 設定準備
       client = Aws::WAF::Client.new(
         region: ENV['AWS_REGION'],
